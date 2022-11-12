@@ -123,3 +123,6 @@ def save_network_go(path, df, gene):
     df_final.to_csv(path / f"{gene}_corr.csv")
     network_figure(path, G, gene)
 
+if __name__ == "__main__":
+    print('this is a test')
+
