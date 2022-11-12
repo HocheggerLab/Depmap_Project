@@ -58,3 +58,6 @@ def lineplot(path, df, gene):
             labelbottom=False)  # labels along the bottom edge are off
     save_fig(path, f"{gene}_lineplot")
     return
+
+if __name__ == "__main__":
+    print('Run Program')
