@@ -2,10 +2,10 @@ from depmap_analysis import corr_figures, corr_intersect, corr_network
 import pandas as pd
 from pathlib import Path
 
-gene_list = ['AURKA']
+gene_list = ['MASTL']
 
-df = pd.read_csv('CRISPR_gene_effect_clean.csv', index_col=0)
-depmap_data = '/Users/hh65/Documents/Current_Results'
+df = pd.read_csv('./AnalysisData/CRISPR_gene_effect_clean.csv', index_col=0)
+depmap_data = '/Users/hh65/Desktop'
 for gene in gene_list:
     path = Path(depmap_data) / f'{gene}_data'
     path.mkdir(exist_ok=True)
