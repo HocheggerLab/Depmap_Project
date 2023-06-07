@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d0" for="graph" attr.name="name" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="PSMC4" />
+    <node id="PFDN5" />
+    <node id="CTPS1" />
+    <node id="DLD" />
+    <node id="PGD" />
+    <node id="SDHC" />
+    <node id="TPI1" />
+    <node id="MTHFD1" />
+    <node id="ADSL" />
+    <node id="UMPS" />
+    <node id="PAICS" />
+    <node id="OBFC1" />
+    <node id="RAD9A" />
+    <node id="NSMCE1" />
+    <node id="TINF2" />
+    <node id="POLA2" />
+    <node id="POLA1" />
+    <node id="POT1" />
+    <node id="TEN1" />
+    <node id="CAD" />
+    <node id="ITGAV" />
+    <node id="FERMT2" />
+    <node id="TLN1" />
+    <node id="CYBA" />
+    <node id="MVD" />
+    <node id="SMG6" />
+    <node id="PPP2CA" />
+    <node id="KIF2C" />
+    <node id="HIST1H2AC" />
+    <node id="HIST1H2BN" />
+    <node id="HIST1H2BD" />
+    <node id="MIS18A" />
+    <node id="RBBP4" />
+    <node id="HIST1H2BC" />
+    <node id="CENPA" />
+    <node id="WDR73" />
+    <node id="PMVK" />
+    <node id="LIN37" />
+    <node id="MRPS11" />
+    <node id="MRPS24" />
+    <node id="ANAPC1" />
+    <node id="CDC26" />
+    <node id="ASTL" />
+    <node id="FAM178B" />
+    <node id="GTF2E2" />
+    <node id="POLR3D" />
+    <node id="GTF2F1" />
+    <node id="MCRS1" />
+    <node id="MASTL" />
+    <node id="SFSWAP" />
+    <node id="ZNF592" />
+    <node id="CDAN1" />
+    <node id="STN1" />
+    <node id="PRR13" />
+    <node id="TFIP11" />
+    <node id="H2BC8" />
+    <node id="CINP" />
+    <node id="ZNF571" />
+    <node id="HOXC6" />
+    <node id="SEMA4C" />
+    <node id="CEP85" />
+    <node id="NPLOC4" />
+    <node id="C7orf33" />
+    <node id="SBK1" />
+    <node id="H2BC15" />
+    <node id="H2BC5" />
+    <node id="H2AC6" />
+    <node id="SNAP29" />
+    <node id="IL36A" />
+    <node id="SFXN3" />
+    <node id="SLC25A28" />
+    <node id="ZFP82" />
+    <node id="AMER3" />
+    <node id="SCAP" />
+    <node id="IQSEC3" />
+    <node id="RLBP1" />
+    <node id="FBXW11" />
+    <edge source="PSMC4" target="PFDN5">
+      <data key="d1">0.501</data>
+    </edge>
+    <edge source="PSMC4" target="CTPS1">
+      <data key="d1">0.558</data>
+    </edge>
+    <edge source="CTPS1" target="MTHFD1">
+      <data key="d1">0.402</data>
+    </edge>
+    <edge source="CTPS1" target="TPI1">
+      <data key="d1">0.414</data>
+    </edge>
+    <edge source="CTPS1" target="UMPS">
+      <data key="d1">0.853</data>
+    </edge>
+    <edge source="CTPS1" target="CAD">
+      <data key="d1">0.792</data>
+    </edge>
+    <edge source="CTPS1" target="ADSL">
+      <data key="d1">0.581</data>
+    </edge>
+    <edge source="CTPS1" target="PAICS">
+      <data key="d1">0.694</data>
+    </edge>
+    <edge source="DLD" target="PGD">
+      <data key="d1">0.496</data>
+    </edge>
+    <edge source="DLD" target="SDHC">
+      <data key="d1">0.578</data>
+    </edge>
+    <edge source="DLD" target="TPI1">
+      <data key="d1">0.708</data>
+    </edge>
+    <edge source="PGD" target="TPI1">
+      <data key="d1">0.785</data>
+    </edge>
+    <edge source="SDHC" target="TPI1">
+      <data key="d1">0.521</data>
+    </edge>
+    <edge source="TPI1" target="PAICS">
+      <data key="d1">0.509</data>
+    </edge>
+    <edge source="TPI1" target="UMPS">
+      <data key="d1">0.585</data>
+    </edge>
+    <edge source="MTHFD1" target="ADSL">
+      <data key="d1">0.545</data>
+    </edge>
+    <edge source="MTHFD1" target="UMPS">
+      <data key="d1">0.651</data>
+    </edge>
+    <edge source="MTHFD1" target="PAICS">
+      <data key="d1">0.849</data>
+    </edge>
+    <edge source="ADSL" target="UMPS">
+      <data key="d1">0.797</data>
+    </edge>
+    <edge source="ADSL" target="CAD">
+      <data key="d1">0.438</data>
+    </edge>
+    <edge source="ADSL" target="PAICS">
+      <data key="d1">0.997</data>
+    </edge>
+    <edge source="UMPS" target="POLA1">
+      <data key="d1">0.413</data>
+    </edge>
+    <edge source="UMPS" target="PAICS">
+      <data key="d1">0.775</data>
+    </edge>
+    <edge source="UMPS" target="CAD">
+      <data key="d1">0.952</data>
+    </edge>
+    <edge source="PAICS" target="CAD">
+      <data key="d1">0.63</data>
+    </edge>
+    <edge source="OBFC1" target="RAD9A">
+      <data key="d1">0.582</data>
+    </edge>
+    <edge source="OBFC1" target="NSMCE1">
+      <data key="d1">0.735</data>
+    </edge>
+    <edge source="OBFC1" target="TINF2">
+      <data key="d1">0.861</data>
+    </edge>
+    <edge source="OBFC1" target="POLA2">
+      <data key="d1">0.88</data>
+    </edge>
+    <edge source="OBFC1" target="POLA1">
+      <data key="d1">0.896</data>
+    </edge>
+    <edge source="OBFC1" target="POT1">
+      <data key="d1">0.923</data>
+    </edge>
+    <edge source="OBFC1" target="TEN1">
+      <data key="d1">0.999</data>
+    </edge>
+    <edge source="TINF2" target="POLA2">
+      <data key="d1">0.602</data>
+    </edge>
+    <edge source="TINF2" target="POLA1">
+      <data key="d1">0.6</data>
+    </edge>
+    <edge source="TINF2" target="HIST1H2AC">
+      <data key="d1">0.607</data>
+    </edge>
+    <edge source="TINF2" target="HIST1H2BN">
+      <data key="d1">0.616</data>
+    </edge>
+    <edge source="TINF2" target="HIST1H2BD">
+      <data key="d1">0.616</data>
+    </edge>
+    <edge source="TINF2" target="TEN1">
+      <data key="d1">0.925</data>
+    </edge>
+    <edge source="TINF2" target="POT1">
+      <data key="d1">0.999</data>
+    </edge>
+    <edge source="POLA2" target="KIF2C">
+      <data key="d1">0.587</data>
+    </edge>
+    <edge source="POLA2" target="POT1">
+      <data key="d1">0.632</data>
+    </edge>
+    <edge source="POLA2" target="TEN1">
+      <data key="d1">0.704</data>
+    </edge>
+    <edge source="POLA2" target="POLA1">
+      <data key="d1">0.999</data>
+    </edge>
+    <edge source="POLA1" target="POT1">
+      <data key="d1">0.652</data>
+    </edge>
+    <edge source="POLA1" target="KIF2C">
+      <data key="d1">0.452</data>
+    </edge>
+    <edge source="POLA1" target="TEN1">
+      <data key="d1">0.693</data>
+    </edge>
+    <edge source="POT1" target="HIST1H2BD">
+      <data key="d1">0.6</data>
+    </edge>
+    <edge source="POT1" target="HIST1H2AC">
+      <data key="d1">0.6</data>
+    </edge>
+    <edge source="POT1" target="HIST1H2BN">
+      <data key="d1">0.608</data>
+    </edge>
+    <edge source="POT1" target="TEN1">
+      <data key="d1">0.931</data>
+    </edge>
+    <edge source="ITGAV" target="FERMT2">
+      <data key="d1">0.445</data>
+    </edge>
+    <edge source="ITGAV" target="TLN1">
+      <data key="d1">0.957</data>
+    </edge>
+    <edge source="FERMT2" target="TLN1">
+      <data key="d1">0.404</data>
+    </edge>
+    <edge source="CYBA" target="MVD">
+      <data key="d1">0.505</data>
+    </edge>
+    <edge source="MVD" target="PMVK">
+      <data key="d1">0.994</data>
+    </edge>
+    <edge source="SMG6" target="PPP2CA">
+      <data key="d1">0.736</data>
+    </edge>
+    <edge source="PPP2CA" target="ANAPC1">
+      <data key="d1">0.478</data>
+    </edge>
+    <edge source="PPP2CA" target="MASTL">
+      <data key="d1">0.823</data>
+    </edge>
+    <edge source="KIF2C" target="CENPA">
+      <data key="d1">0.941</data>
+    </edge>
+    <edge source="KIF2C" target="MCRS1">
+      <data key="d1">0.41</data>
+    </edge>
+    <edge source="KIF2C" target="MASTL">
+      <data key="d1">0.512</data>
+    </edge>
+    <edge source="HIST1H2AC" target="HIST1H2BD">
+      <data key="d1">0.996</data>
+    </edge>
+    <edge source="HIST1H2AC" target="MIS18A">
+      <data key="d1">0.6</data>
+    </edge>
+    <edge source="HIST1H2AC" target="HIST1H2BC">
+      <data key="d1">0.991</data>
+    </edge>
+    <edge source="HIST1H2AC" target="CENPA">
+      <data key="d1">0.943</data>
+    </edge>
+    <edge source="HIST1H2AC" target="RBBP4">
+      <data key="d1">0.683</data>
+    </edge>
+    <edge source="HIST1H2AC" target="HIST1H2BN">
+      <data key="d1">0.975</data>
+    </edge>
+    <edge source="HIST1H2BN" target="HIST1H2BD">
+      <data key="d1">0.802</data>
+    </edge>
+    <edge source="HIST1H2BN" target="MIS18A">
+      <data key="d1">0.6</data>
+    </edge>
+    <edge source="HIST1H2BN" target="CENPA">
+      <data key="d1">0.895</data>
+    </edge>
+    <edge source="HIST1H2BN" target="RBBP4">
+      <data key="d1">0.629</data>
+    </edge>
+    <edge source="HIST1H2BD" target="MIS18A">
+      <data key="d1">0.601</data>
+    </edge>
+    <edge source="HIST1H2BD" target="RBBP4">
+      <data key="d1">0.628</data>
+    </edge>
+    <edge source="HIST1H2BD" target="HIST1H2BC">
+      <data key="d1">0.735</data>
+    </edge>
+    <edge source="HIST1H2BD" target="CENPA">
+      <data key="d1">0.894</data>
+    </edge>
+    <edge source="MIS18A" target="WDR73">
+      <data key="d1">0.416</data>
+    </edge>
+    <edge source="MIS18A" target="RBBP4">
+      <data key="d1">0.879</data>
+    </edge>
+    <edge source="MIS18A" target="CENPA">
+      <data key="d1">0.966</data>
+    </edge>
+    <edge source="RBBP4" target="LIN37">
+      <data key="d1">0.996</data>
+    </edge>
+    <edge source="RBBP4" target="CENPA">
+      <data key="d1">0.949</data>
+    </edge>
+    <edge source="RBBP4" target="MCRS1">
+      <data key="d1">0.43</data>
+    </edge>
+    <edge source="HIST1H2BC" target="CENPA">
+      <data key="d1">0.874</data>
+    </edge>
+    <edge source="WDR73" target="ZNF592">
+      <data key="d1">0.552</data>
+    </edge>
+    <edge source="MRPS11" target="MRPS24">
+      <data key="d1">0.989</data>
+    </edge>
+    <edge source="ANAPC1" target="CDC26">
+      <data key="d1">0.998</data>
+    </edge>
+    <edge source="ASTL" target="FAM178B">
+      <data key="d1">0.517</data>
+    </edge>
+    <edge source="GTF2E2" target="POLR3D">
+      <data key="d1">0.458</data>
+    </edge>
+    <edge source="GTF2E2" target="GTF2F1">
+      <data key="d1">0.999</data>
+    </edge>
+    <edge source="GTF2F1" target="SFSWAP">
+      <data key="d1">0.74</data>
+    </edge>
+    <data key="d0">Protein Interaction Graph</data>
+  </graph>
+</graphml>

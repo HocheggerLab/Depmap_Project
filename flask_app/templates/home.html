@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;  /* adjust this to change distance from the top */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .download-link {
+            margin-top: 50px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <title>Depmap analysis</title>
+        <h1>Upload your CSV file</h1>
+        <form action='/start_analysis' method=post enctype=multipart/form-data>
+            <input type=file name=file required>
+            <select name="analysis_type" required>
+                <option value="">Select an analysis ...</option>
+                <option value='gene_dependence'>Gene Dependence</option>
+                <option value="gene_expression">Gene Expression</option>
+                <option value="mutation">Mutation</option>
+                <option value="drug_sensitivity">Drug Sensitivity</option>
+            </select>
+            <input type=text name='genes' value="gene">
+            <input type=submit  value="Start Analysis">
+        </form>
+
+        <a class="download-link" href="/result_results" download>Download result</a>
+    </div>
+</body>
+</html>
+
+
