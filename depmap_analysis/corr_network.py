@@ -79,6 +79,7 @@ def community_go(G, gene):
     and performs GSEA with this list (if the community contains 6 or more genes)
     """
     df_go = pd.DataFrame()
+    df = pd.DataFrame()  # initialize df here
     com = sorted(nx.algorithms.community.k_clique_communities(G, 3), key=lambda x: len(x))
     if list(com):
         gene_list = list(list(com)[-1])
@@ -93,7 +94,8 @@ def community_go(G, gene):
                 print('no GO enrichment')
         else:
             print('clique community too small')
-        return com, df, df_go
+    return com, df, df_go
+
 
 def network_figure(path, G, gene):
 

@@ -9,7 +9,7 @@ def pearson(df, Gene):
     """
     dict1 = {'Gene': [], 'Pearson_R': [], 'Pearson_p': []}
     for col in df:
-        (P, p) = stats.pearsonr(df[Gene], df[col])
+        (P, p) = stats.pearsonr(df[Gene].astype(np.float64), df[col].astype(np.float64))
         dict1['Gene'].append(col)
         dict1['Pearson_R'].append(P)
         dict1['Pearson_p'].append(p)

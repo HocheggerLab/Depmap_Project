@@ -79,7 +79,8 @@ class DataDownload:
                                     axis=1
                                     )
         df_reindex = df_reindex.set_index([self.rename])
-        df_reindex.columns = df_reindex.columns.str.split(' ', 1).str.get(0)
+        # df_reindex.columns = df_reindex.columns.str.split(' ', 1).str.get(0)
+        df_reindex.columns = df_reindex.columns.str.split(' ').str[0]
         return df_reindex
 
     @staticmethod
@@ -132,7 +133,7 @@ class DataDownload:
         :return: (CSV) DF saved as CSV
         """
 
-        project_root_dir = ".."
+        project_root_dir = "/Users/haoranyue/Desktop/"
         files = os.path.join(project_root_dir,
                              self.foldername
                              )

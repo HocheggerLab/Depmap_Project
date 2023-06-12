@@ -1,45 +1,32 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-
-        h1 {
-            text-align: center;
-            margin-top: 10px;  /* adjust this to change distance from the top */
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .download-link {
-            margin-top: 50px; /* Adjust as needed */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>RP Flask REST API</title>
 </head>
 <body>
-    <div class="container">
-        <title>Depmap analysis</title>
-        <h1>Upload your CSV file</h1>
-        <form action='/start_analysis' method=post enctype=multipart/form-data>
-            <input type=file name=file required>
-            <select name="analysis_type" required>
-                <option value="">Select an analysis ...</option>
-                <option value='gene_dependence'>Gene Dependence</option>
-                <option value="gene_expression">Gene Expression</option>
-                <option value="mutation">Mutation</option>
-                <option value="drug_sensitivity">Drug Sensitivity</option>
-            </select>
-            <input type=text name='genes' value="gene">
-            <input type=submit  value="Start Analysis">
-        </form>
-
-        <a class="download-link" href="/result_results" download>Download result</a>
-    </div>
+    <h1>
+        Gene Correlation
+    </h1>
+    {% for gene in genes %}
+    <h2>Gene ID:{{ gene.id }}    {{ gene.gene }} </h2>
+    <h3>Correlated Gene: {{gene.corr_gene}} </h3>
+    <h4>Pearson R: {{gene.pearson_r}} </h4>
+    <h4>Spearman R: {{gene.spearman_r}} </h4>
+    <h4>Mean Difference: {{gene.mean_diff}} </h4>
+    <h4>Pearson P: {{gene.pearson_p}} </h4>
+    <h4>Spearman P: {{gene.spearman_p}} </h4>
+    <h4>Mean Difference P: {{gene.mean_diff_p}} </h4>
+    <h4>Largest Comm: {{gene.largest_comm}} </h4>
+    <h4>Type: {{gene.type}} </h4>
+    <ul>
+        {% for note in gene.notes %}
+        <li>
+           Note id: {{ note.id }}
+            {{ note.content }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
 </body>
 </html>
-
-
