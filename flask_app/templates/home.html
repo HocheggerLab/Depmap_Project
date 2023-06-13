@@ -9,24 +9,29 @@
         Gene Correlation
     </h1>
     {% for gene in genes %}
-    <h2>Gene ID:{{ gene.id }}    {{ gene.gene }} </h2>
-    <h3>Correlated Gene: {{gene.corr_gene}} </h3>
-    <h4>Pearson R: {{gene.pearson_r}} </h4>
-    <h4>Spearman R: {{gene.spearman_r}} </h4>
-    <h4>Mean Difference: {{gene.mean_diff}} </h4>
-    <h4>Pearson P: {{gene.pearson_p}} </h4>
-    <h4>Spearman P: {{gene.spearman_p}} </h4>
-    <h4>Mean Difference P: {{gene.mean_diff_p}} </h4>
-    <h4>Largest Comm: {{gene.largest_comm}} </h4>
-    <h4>Type: {{gene.type}} </h4>
-    <ul>
-        {% for note in gene.notes %}
-        <li>
-           Note id: {{ note.id }}
-            {{ note.content }}
-        </li>
+        <h2>Gene: {{ gene.gene }}</h2>
+        {% for correlation in gene.correlations %}
+            <h3>Correlated Gene: {{ correlation.corr_gene }}</h3>
+            <p>Pearson R: {{ correlation.pearson_r }}</p>
+            <p>Spearman R: {{ correlation.spearman_r }}</p>
+            <p>Mean Difference: {{ correlation.mean_diff }}</p>
+            <p>Pearson P: {{ correlation.pearson_p }}</p>
+            <p>Spearman P: {{ correlation.spearman_p }}</p>
+            <p>Mean Difference P: {{ correlation.mean_diff_p }}</p>
+            <p>Largest Comm: {{ correlation.largest_comm }}</p>
+            <p>Type: {{ correlation.type }}</p>
         {% endfor %}
-    </ul>
+        <ul>
+            {% for note in gene.notes %}
+                <li>
+                    Note: {{ note.content }}
+                    Date: {{ note.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                </li>
+            {% endfor %}
+        </ul>
     {% endfor %}
 </body>
 </html>
+
+
+

@@ -26,8 +26,32 @@ class NoteSchema(ma.SQLAlchemyAutoSchema):
 
 class Gene(db.Model):
     __tablename__ = "gene"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    gene=db.Column(db.String(32),unique=True)
+    timestamp=db.Column(
+        db.DateTime,default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+    notes=db.relationship(
+        'Note',
+        backref='gene',
+        cascade='all,delete,delete-orphan',
+        single_parent=True,
+        order_by="desc(Note.timestamp)",
+
+    )
+
+    correlations=db.relationship(
+        'Correlation',
+        backref='gene',
+        cascade='all,delete,delete-orphan',
+        single_parent=True,
+        order_by='desc(Correlation.corr_gene)'
+    )
+
+class Correlation(db.Model):
+    __tablename__ = "correlation"
     id = db.Column(db.Integer, primary_key=True)
-    gene = db.Column(db.String(32), unique=True)
+    gene_id = db.Column(db.Integer, db.ForeignKey("gene.id"))
     corr_gene = db.Column(db.String(32))
     pearson_r = db.Column(db.Float)
     spearman_r = db.Column(db.Float)
@@ -37,16 +61,8 @@ class Gene(db.Model):
     mean_diff_p = db.Column(db.Float)
     largest_comm = db.Column(db.Boolean)
     type = db.Column(db.String(64))
-    timestamp = db.Column(
-        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
-    )
-    notes = db.relationship(
-        "Note",
-        backref="gene",
-        cascade="all, delete, delete-orphan",
-        single_parent=True,
-        order_by="desc(Note.timestamp)",
-    )
+
+
 
 class GeneSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
@@ -56,7 +72,19 @@ class GeneSchema(ma.SQLAlchemyAutoSchema):
         include_relationships = True
 
     notes = ma.Nested(NoteSchema, many=True)
+    correlations = ma.Nested("CorrelationSchema", many=True)
+
+class CorrelationSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Correlation
+        sqla_session = db.session
+
+
+
+
 
 note_schema = NoteSchema()
 gene_schema = GeneSchema()
 genes_schema = GeneSchema(many=True)
+correlation_schema = CorrelationSchema()
+correlations_schema = CorrelationSchema(many=True)
