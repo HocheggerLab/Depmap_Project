@@ -67,3 +67,5 @@ def delete(gene_name):
         return make_response(f"{gene_name} successfully deleted", 200)
     else:
         abort(404, f"Gene with name {gene_name} not found")
+
+

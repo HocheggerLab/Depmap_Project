@@ -1,8 +1,7 @@
-
 openapi: 3.0.0
 info:
   title: 'RP Flask REST API'
-  description: 'An API about people and notes'
+  description: 'An API about genes, correlations, and notes'
   version: '1.0.0'
 
 servers:
@@ -10,46 +9,60 @@ servers:
 
 components:
   schemas:
+    Note:
+      type: 'object'
+      required:
+        - person_id
+        - content
+      properties:
+        person_id:
+          type: 'integer'
+        content:
+          type: 'string'
+    Correlation:
+      type: 'object'
+      properties:
+        corr_gene:
+          type: 'string'
+        pearson_r:
+          type: 'number'
+        spearman_r:
+          type: 'number'
+        mean_diff:
+          type: 'number'
+        pearson_p:
+          type: 'number'
+        spearman_p:
+          type: 'number'
+        mean_diff_p:
+          type: 'number'
+        largest_comm:
+          type: 'boolean'
+        type:
+          type: 'string'
     Gene:
       type: 'object'
       required:
-        - GENE
+        - gene
       properties:
-        GENE:
+        gene:
           type: 'string'
-        Corr_GENE:
-          type: 'string'
-        Pearson_R:
-          type: 'integer'
-        Spearman_R:
-          type: 'integer'
-        Mean_Diff:
-          type: 'integer'
-        Pearson_p:
-          type: 'integer'
-        Spearman_p:
-          type: 'integer'
-        Mean_Diff_p:
-          type: 'integer'
-        Largest_Comm:
-          type: 'string'
-        TYPE:
-          type: 'string'
+        notes:
+          type: 'array'
+          items:
+            $ref: '#/components/schemas/Note'
+        correlations:
+          type: 'array'
+          items:
+            $ref: '#/components/schemas/Correlation'
   parameters:
-    GENE:
-      name: "GENE"
-      description: "selected the gene to get"
+    gene_name:
+      name: "gene_name"
+      description: "Selected gene to get"
       in: path
       required: True
       schema:
         type: "string"
-    note_id:
-      name: "note_id"
-      description: "ID of the note"
-      in: path
-      required: true
-      schema:
-        type: "integer"
 
 paths:
   /gene:
@@ -57,14 +70,14 @@ paths:
       operationId: "gene.read_all"
       tags:
         - "Gene"
-      summary: "Read the list of gene"
+      summary: "Read the list of genes"
       responses:
         '200':
           description: "Successfully read gene list"
     post:
       operationId: "gene.create"
       tags:
-        - Gene
+        - "Gene"
       summary: "Create gene"
       requestBody:
         description: "Gene to create"
@@ -76,24 +89,24 @@ paths:
       responses:
         "201":
           description: "Successfully created gene"
-  /gene/{GENE}:
+  /gene/{gene_name}:
     get:
       operationId: "gene.read_one"
       tags:
-        - Gene
-      summary: "Read one GENE"
+        - "Gene"
+      summary: "Read one gene"
       parameters:
-        - $ref: "#/components/parameters/GENE"
+        - $ref: "#/components/parameters/gene_name"
       responses:
         "200":
-          description: "Successfully read GENE"
+          description: "Successfully read gene"
     put:
       tags:
-        - Gene
+        - "Gene"
       operationId: "gene.update"
       summary: "Update a gene"
       parameters:
-        - $ref: "#/components/parameters/GENE"
+        - $ref: "#/components/parameters/gene_name"
       requestBody:
         content:
           application/json:
@@ -101,22 +114,25 @@ paths:
               $ref: "#/components/schemas/Gene"
       responses:
         "200":
-          description: "Successfully updated GENE"
+          description: "Successfully updated gene"
+        "404":
+          description: "Gene not found"
     delete:
       tags:
-        - Gene
+        - "Gene"
       operationId: "gene.delete"
       summary: "Delete a gene"
       parameters:
-        - $ref: "#/components/parameters/GENE"
+        - $ref: "#/components/parameters/gene_name"
       responses:
         "204":
-          description: "Successfully deleted GENE"
+          description: "Successfully deleted gene"
+
   /notes:
     post:
       operationId: "notes.create"
       tags:
-        - Notes
+        - "Notes"
       summary: "Create a note associated with a gene"
       requestBody:
           description: "Note to create"
@@ -124,12 +140,7 @@ paths:
           content:
             application/json:
               schema:
-                type: "object"
-                properties:
-                  person_id:
-                    type: "integer"
-                  content:
-                    type: "string"
+                $ref: "#/components/schemas/Note"
       responses:
         "201":
           description: "Successfully created a note"
@@ -137,20 +148,30 @@ paths:
     get:
       operationId: "notes.read_one"
       tags:
-        - Notes
+        - "Notes"
       summary: "Read one note"
       parameters:
-        - $ref: "#/components/parameters/note_id"
+        - name: "note_id"
+          in: "path"
+          description: "ID of note to get"
+          required: True
+          schema:
+            type: "integer"
       responses:
         "200":
           description: "Successfully read one note"
     put:
       tags:
-        - Notes
+        - "Notes"
       operationId: "notes.update"
       summary: "Update a note"
       parameters:
-        - $ref: "#/components/parameters/note_id"
+        - name: "note_id"
+          in: "path"
+          description: "ID of note to update"
+          required: True
+          schema:
+            type: "integer"
       responses:
         "200":
           description: "Successfully updated note"
@@ -158,36 +179,167 @@ paths:
         content:
           application/json:
             schema:
-              x-body-name: "note"
-              type: "object"
-              properties:
-                content:
-                  type: "string"
+              $ref: "#/components/schemas/Note"
     delete:
       tags:
-        - Notes
+        - "Notes"
       operationId: "notes.delete"
       summary: "Delete a note"
       parameters:
-        - $ref: "#/components/parameters/note_id"
+        - name: "note_id"
+          in: "path"
+          description: "ID of note to delete"
+          required: True
+          schema:
+            type: "integer"
       responses:
         "204":
           description: "Successfully deleted note"
 
-#  /notes/{note_id}:
-#    get:
-#      operationId: "notes.read_one"
+  /gene/{gene_name}/correlation:
+    get:
+      operationId: "correlation.read_correlations"
+      tags:
+        - "Correlation"
+      summary: "Read all correlations of a specific gene"
+      parameters:
+        - $ref: "#/components/parameters/gene_name"
+      responses:
+        "200":
+          description: "Successfully read correlations list for gene"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Correlation"
+    post:
+      operationId: "correlation.create_for_gene"
+      tags:
+        - "Correlation"
+      summary: "Create a correlation for a specific gene"
+      parameters:
+        - $ref: "#/components/parameters/gene_name"
+      requestBody:
+        required: True
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Correlation"
+      responses:
+        "201":
+          description: "Successfully created correlation"
+
+  /gene/{gene_name}/correlation/{correlation_id}:
+    put:
+      operationId: "correlation.update_for_gene"
+      tags:
+        - "Correlation"
+      summary: "Update a correlation for a specific gene"
+      parameters:
+        - $ref: "#/components/parameters/gene_name"
+        - name: "correlation_id"
+          in: "path"
+          description: "ID of correlation to update"
+          required: True
+          schema:
+            type: "integer"
+      requestBody:
+        required: True
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Correlation"
+      responses:
+        "200":
+          description: "Successfully updated correlation"
+        "404":
+          description: "Correlation not found"
+    delete:
+      operationId: "correlation.delete_for_gene"
+      tags:
+        - "Correlation"
+      summary: "Delete a correlation for a specific gene"
+      parameters:
+        - $ref: "#/components/parameters/gene_name"
+        - name: "correlation_id"
+          in: "path"
+          description: "ID of correlation to delete"
+          required: True
+          schema:
+            type: "integer"
+      responses:
+        "204":
+          description: "Successfully deleted correlation"
+        "404":
+          description: "Correlation not found"
+
+
+#    post:
+#      operationId: "correlation.create"
 #      tags:
-#        - Notes
-#      summary: "Read one gene"
+#        - "Correlation"
+#      summary: "Create a correlation"
+#      requestBody:
+#        description: "Correlation to create"
+#        required: True
+#        content:
+#          application/json:
+#            schema:
+#              $ref: "#/components/schemas/Correlation"
 #      responses:
-#        '200':
-#          description: Successful operation
-#          content:
-#            application/json:
-#              schema:
-#                type: object
-#                properties:
-#                  note:
-#                    $ref: "#/components/parameters/note_id"
+#        "201":
+#          description: "Successfully created correlation"
+#  /correlation/{corr_id}:
+#    get:
+#      operationId: "correlation.read_one"
+#      tags:
+#        - "Correlation"
+#      summary: "Read one correlation"
+#      parameters:
+#        - name: "corr_id"
+#          in: "path"
+#          description: "ID of correlation to get"
+#          required: True
+#          schema:
+#            type: "integer"
+#      responses:
+#        "200":
+#          description: "Successfully read correlation"
+#    put:
+#      tags:
+#        - "Correlation"
+#      operationId: "correlation.update"
+#      summary: "Update a correlation"
+#      parameters:
+#        - name: "corr_id"
+#          in: "path"
+#          description: "ID of correlation to update"
+#          required: True
+#          schema:
+#            type: "integer"
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: "#/components/schemas/Correlation"
+#      responses:
+#        "200":
+#          description: "Successfully updated correlation"
+#    delete:
+#      tags:
+#        - "Correlation"
+#      operationId: "correlation.delete"
+#      summary: "Delete a correlation"
+#      parameters:
+#        - name: "corr_id"
+#          in: "path"
+#          description: "ID of correlation to delete"
+#          required: True
+#          schema:
+#            type: "integer"
+#      responses:
+#        "204":
+#          description: "Successfully deleted correlation"
 #
+
